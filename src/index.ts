@@ -9,7 +9,7 @@ app.get("/", () => "Hello Elysia");
 
 app.group('/v1', app => app
     .use(cors({
-      origin: /\.h-ultra\.net$/
+      origin: new RegExp(process.env.CORS_ORIGIN_REGEX || '')
     }))
     .state('version', 1 as number | null)
     .get('/', () => 'Using v1')
